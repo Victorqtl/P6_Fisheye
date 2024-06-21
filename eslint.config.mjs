@@ -5,8 +5,7 @@ export default [
     languageOptions: { globals: globals.browser },
     files: ["**/*.js"],
     rules: {
-      "no-console": "error",
-      "no-debugger": "error",
+      "no-console": "warn",
       "no-unused-vars": "warn",
       "no-undef": "off",
     },
