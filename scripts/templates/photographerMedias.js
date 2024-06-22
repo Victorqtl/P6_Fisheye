@@ -166,10 +166,18 @@ function displayPhotographerMedia(photographerMedia) {
     // Événements ouverture lightbox
     const allMedias = document.querySelectorAll('.medias');
     allMedias.forEach(media => {
+        // Ajout d'un écouteur pour le clic
         media.addEventListener('click', (event) => {
             openLightbox(event, media.getAttribute('data-index'));
         });
-    })
+        // Ajout d'un écouteur pour la touche Entrée
+        media.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            openLightbox(event, media.getAttribute('data-index'));
+            }
+        });
+    });
 
     // Èvénements fermeture lightbox
     closeLightboxBtn.addEventListener('click', closeLightbox);
@@ -177,7 +185,7 @@ function displayPhotographerMedia(photographerMedia) {
     // Ajout du total des likes
     let totalLikes = getTotalLikes(photographerMedia);
     const photographInsert = document.querySelector('.photograph-insert')
-    
+
     // Vérifie si likesContent existe déjà pour éviter les dupplications à chaque tri
     let likesContent = photographInsert.querySelector('.likes-content');
     if (!likesContent) {
@@ -187,7 +195,7 @@ function displayPhotographerMedia(photographerMedia) {
     } else {
         likesContent.innerHTML = '';
     }
-    
+
     // Ajout du total des likes et du svg en html
     const likesElement = document.createElement('p');
     likesElement.classList.add('likes-element');
