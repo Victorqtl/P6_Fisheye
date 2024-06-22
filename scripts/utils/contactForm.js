@@ -65,6 +65,7 @@ form.addEventListener('submit', (event) => {
         }
         // Stockage des données
         formData[input.name] = input.value;
+        console.log(input.value);
     }
     // Affichage message de validation
     if (allFieldsFilled) {
@@ -73,5 +74,5 @@ form.addEventListener('submit', (event) => {
     } else {
         errorMessage.style.display = 'block';
     }
-
+    
 });
